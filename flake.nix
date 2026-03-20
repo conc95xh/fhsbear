@@ -19,18 +19,26 @@
     {
       devShells.${system}.default = (pkgs.buildFHSEnv {
         name = "broadcom-fhs";
-        extraOutputsToInstall = [ "dev" "static" ];
+        multiArch = true;
+        multiPkgs = pkgs: with pkgs; [
+          glibc
+        ];
         targetPkgs = pkgs: with pkgs; [
           cmake
           gcc
           glibc
+          glibc.dev
+          glibc.static
           gettext
           popt
           flex
           libtool
           gnutar
           libuuid
+          libuuid.dev
+          bc
           lzo
+          cpio
           pkg-config
           autoconf
           automake
@@ -47,15 +55,18 @@
           rsync
           git
           openssl
+          openssl.dev
           automake
           bison
           bear
           gnumake
           bash
           zlib
+          zlib.dev
           file
           libxcrypt
           ncurses
+          ncurses.dev
           util-linux
           hostname
           which
