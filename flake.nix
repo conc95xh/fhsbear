@@ -30,6 +30,7 @@
           glibc.dev
           glibc.static
           gettext
+          openssh
           popt
           flex
           libtool
